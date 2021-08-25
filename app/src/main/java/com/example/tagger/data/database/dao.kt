@@ -10,8 +10,10 @@ interface Dao {
     @Query("SELECT * FROM images WHERE id = :id")
     fun getById(id: Long): LiveData<TaggedImageEntity>
 
-    @Query("SELECT * FROM images WHERE tags = :tags")
-    fun getByTags(tags: List<String>): LiveData<TaggedImageEntity>
+    @Query("SELECT * FROM images")
+    fun getAll(tags: List<String>): LiveData<TaggedImageEntity>
+
+
 
     @Insert
     suspend fun insert(taggedImageEntity: TaggedImageEntity)

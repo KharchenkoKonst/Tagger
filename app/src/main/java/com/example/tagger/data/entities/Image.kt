@@ -7,8 +7,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity(tableName = "images")
-data class TaggedImageEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val tags: List<String>,
+data class Image(
+    @PrimaryKey(autoGenerate = true) val imageId: Long,
     val imageURI: String
 ) : Parcelable
