@@ -1,4 +1,7 @@
 package com.example.tagger.domain.interactors
 
-class RemoveTaggedImageUseCaseImpl : RemoveTaggedImageUseCase{
+import com.example.tagger.domain.repository.ImagesRepository
+
+class RemoveTaggedImageUseCaseImpl(private val imagesRepository: ImagesRepository) :
+    RemoveTaggedImageUseCase {
 }

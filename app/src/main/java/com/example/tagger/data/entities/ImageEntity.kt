@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-@Parcelize
-@Entity(tableName = "images")
-data class Image(
-    @PrimaryKey(autoGenerate = true) val imageId: Long,
+@Entity(tableName = "image")
+data class ImageEntity(
+    @PrimaryKey(autoGenerate = true)
+    val imageId: Long = 0,
     val imageURI: String
-) : Parcelable
+)
