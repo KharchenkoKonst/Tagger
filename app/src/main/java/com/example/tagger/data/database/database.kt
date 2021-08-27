@@ -4,12 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.tagger.data.entities.ImageEntity
-import com.example.tagger.data.entities.TagEntity
-import com.example.tagger.data.entities.TagImageAssociation
+import com.example.tagger.data.entities.TagImageEntity
 
 @Database(
-    entities = [ImageEntity::class, TagEntity::class, TagImageAssociation::class],
+//    entities = [ImageEntity::class, TagEntity::class, TagImageAssociation::class],
+    entities = [TagImageEntity::class],
     version = 1
 )
 abstract class AppDatabase : RoomDatabase() {

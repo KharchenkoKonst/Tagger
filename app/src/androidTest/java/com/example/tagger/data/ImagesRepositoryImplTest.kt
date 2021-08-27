@@ -1,14 +1,12 @@
 package com.example.tagger.data
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.tagger.data.database.AppDatabase
 import com.example.tagger.data.database.Dao
-import com.example.tagger.data.entities.ImageEntity
-import com.example.tagger.data.entities.TagEntity
-import com.example.tagger.data.entities.TagImageAssociation
-import com.example.tagger.data.entities.TagWithImages
+import com.example.tagger.data.entities.TagImageEntity
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.*
 
@@ -31,6 +29,23 @@ internal class ImagesRepositoryImplTest {
     }
 
     @Test
+    fun add(): Unit = runBlocking {
+        val tag = "tag1"
+        val images = listOf("uri1", "uri2", "uri3")
+
+        for (image in images){
+            dao.add(TagImageEntity(tag, image))
+        }
+
+        val request = dao.getByTag(tag)
+        for (i in 0..2){
+            Assertions.assertEquals(request[i].image, images[i])
+        }
+    }
+
+
+
+/*    @Test
     @Disabled
     fun createData(): Unit = runBlocking {
 
@@ -71,7 +86,9 @@ internal class ImagesRepositoryImplTest {
         Assertions.assertEquals(result[2].images.size, 0)
     }
 
+    @Disabled
     @Test
+    //TODO
     fun editData(): Unit = runBlocking {
         createData()
 
@@ -101,5 +118,5 @@ internal class ImagesRepositoryImplTest {
 
         dao.removeAssociation(imageForEdit.tags[1].tagId, imageForEdit.imageEntity.imageId)
 
-    }
+    }*/
 }
